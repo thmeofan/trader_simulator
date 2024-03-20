@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "314426725147",
+    "project_id": "trad-sim",
+    "storage_bucket": "trad-sim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314426725147:android:9d5d8febbe9203f0b8f9be",
+        "android_client_info": {
+          "package_name": "com.example.trader_simulator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt87sjB9G_NPpQmWj8447dXANhPsqZnW4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
