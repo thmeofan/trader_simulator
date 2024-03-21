@@ -19,10 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   List<Widget> homeWidgets = [
     StockScreen(),
+    PortfolioScreen(),
     NewsScreen(
       newsModel: news,
     ),
-    PortfolioScreen(),
     SettingsScreen(),
   ];
 
@@ -36,35 +36,43 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/stock.svg',
-              width: size.height * 0.045,
-              height: size.height * 0.045,
-              color: currentIndex == 0 ? AppColors.purpleColor : Colors.white,
+              // width: size.height * 0.025,
+              height: size.height * 0.032,
+              color: currentIndex == 0
+                  ? AppColors.blueColor
+                  : AppColors.lightGreyColor,
             ),
             label: 'Finance',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/portfolio.svg',
-              width: size.height * 0.045,
-              height: size.height * 0.045,
-              color: currentIndex == 1 ? AppColors.purpleColor : Colors.white,
+              //  width: size.height * 0.025,
+              height: size.height * 0.032,
+              color: currentIndex == 1
+                  ? AppColors.blueColor
+                  : AppColors.lightGreyColor,
             ),
             label: 'News',
           ),
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/news.svg',
-                width: size.height * 0.045,
-                height: size.height * 0.045,
-                color: currentIndex == 2 ? AppColors.purpleColor : Colors.white,
+                // width: size.height * 0.025,
+                height: size.height * 0.032,
+                color: currentIndex == 2
+                    ? AppColors.blueColor
+                    : AppColors.lightGreyColor,
               ),
               label: 'Currency'),
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/settings.svg',
-                width: size.height * 0.045,
-                height: size.height * 0.045,
-                color: currentIndex == 2 ? AppColors.purpleColor : Colors.white,
+                //  width: size.height * 0.025,
+                height: size.height * 0.032,
+                color: currentIndex == 3
+                    ? AppColors.blueColor
+                    : AppColors.lightGreyColor,
               ),
               label: 'Currency'),
         ],

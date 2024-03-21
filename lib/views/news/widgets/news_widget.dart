@@ -1,6 +1,5 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles/news_text_style.dart';
 import '../../../data/models/news_model.dart';
@@ -22,14 +21,14 @@ class NewsWidget extends StatelessWidget {
               .pushNamed(AppRoutes.article, arguments: newsModel);
         },
         child: Container(
-          height: screenSize.height * 0.3,
+          height: screenSize.height * 0.175,
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(vertical: screenSize.width * 0.01),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
             color: AppColors.darkGreyColor,
           ),
-          child: Column(
+          child: Row(
             children: [
               Expanded(
                 child: Padding(
@@ -39,29 +38,13 @@ class NewsWidget extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Text(
-                          newsModel.title,
-                          maxLines: 2,
-                          style: NewsTextStyle.title,
-                        ),
-                      ),
-                      SizedBox(
-                        height: screenSize.height * 0.005,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
+                        child: Center(
                           child: Text(
-                            newsModel.text,
-                            style: NewsTextStyle.preview,
-                            maxLines: 3,
-                            softWrap: true,
-                            overflow: TextOverflow.ellipsis,
+                            newsModel.title,
+                            maxLines: 2,
+                            style: NewsTextStyle.title,
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: screenSize.height * 0.015,
                       ),
                     ],
                   ),
@@ -70,7 +53,7 @@ class NewsWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
                 child: FancyShimmerImage(
-                  width: screenSize.width * 0.89,
+                  width: screenSize.height * 0.2,
                   height: screenSize.height * 0.15,
                   boxFit: BoxFit.cover,
                   imageUrl: newsModel.imageUrl,

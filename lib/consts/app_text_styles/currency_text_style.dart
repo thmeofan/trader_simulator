@@ -38,14 +38,14 @@ class CurrencyTextStyle {
     fontWeight: FontWeight.w500,
     color: Colors.white,
   );
-  static const TextStyle detailTitle = TextStyle(
+  static  TextStyle detailTitle = TextStyle(
     fontFamily: 'SF Pro Display',
     fontSize: 18.0,
     height: 20 / 18,
     fontWeight: FontWeight.w800,
     color: AppColors.darkGreyColor,
   );
-  static const TextStyle numbers = TextStyle(
+  static TextStyle numbers = TextStyle(
     fontFamily: 'SF Pro Display',
     fontSize: 14.0,
     height: 20 / 14,

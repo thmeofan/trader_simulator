@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      //  extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.blackColor,
@@ -40,107 +40,104 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         color: AppColors.blackColor,
         child: Column(
           children: [
-            Expanded(
-              child: CarouselSlider(
-                items: const [
-                  IntroductionSVGWidget(
-                    imagePath: 'assets/images/onboarding1.svg',
-                  ),
-                  IntroductionSVGWidget(
-                    imagePath: 'assets/images/onboarding2.svg',
-                  ),
-                ],
-                carouselController: _carouselController,
-                options: CarouselOptions(
-                  height: size.height * 0.6,
-                  autoPlay: false,
-                  //  enlargeCenterPage: true,
-                  viewportFraction: 1,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  },
-                ),
-              ),
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(2, (index) {
-                      return AnimatedContainer(
-                        duration: Duration(milliseconds: 200),
-                        curve: Curves.easeInOut,
-                        width: _current == index
-                            ? size.width * 0.06
-                            : size.width * 0.02,
-                        height: size.width * 0.02,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 1.0, horizontal: 3.5),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius:
-                              BorderRadius.circular(size.width * 0.01),
-                          color: _current == index
-                              ? AppColors.purpleColor
-                              : Colors.white,
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(size.height * 0.01),
+                  child: Container(
+                    height: size.height * 0.18,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // SizedBox(
+                        //   height: size.height * 0.01,
+                        // ),
+                        Text(
+                          _current == 0 ? 'Welcome to app!' : 'Create events.',
+                          style: OnboardingTextStyle.introduction,
+                          textAlign: TextAlign.start,
+                          softWrap: true,
+                          overflow: TextOverflow.visible,
                         ),
-                      );
-                    }),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(size.height * 0.02),
-                    child: Container(
-                      height: size.height * 0.3,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: size.height * 0.01,
-                          ),
-                          Flexible(
-                            child: Text(
-                              _current == 0
-                                  ? 'Save money'
-                                  : 'Check your wallet',
-                              style: OnboardingTextStyle.introduction,
-                              textAlign: TextAlign.start,
-                              softWrap: true,
-                              overflow: TextOverflow.visible,
-                            ),
-                          ),
-                          SizedBox(
-                            height: size.height * 0.01,
-                          ),
-                          Text(
-                            _current == 0
-                                ? 'Have control over your money in one safe place'
-                                : 'In our app you can track your spendings and incomes',
-                            style: OnboardingTextStyle.description,
-                            textAlign: TextAlign.center,
-                            softWrap: true,
-                            overflow: TextOverflow.visible,
-                          ),
-                          Spacer(),
-                          ChosenActionButton(
-                            onTap: () async {
-                              context.read<OnboardingCubit>().setFirstTime();
-                              Navigator.pushReplacementNamed(
-                                  context, AppRoutes.home);
-                            },
-                            text: 'Continue',
-                          ),
-                          SizedBox(
-                            height: size.height * 0.015,
-                          ),
-                        ],
-                      ),
+                        SizedBox(
+                          height: size.height * 0.01,
+                        ),
+                        Text(
+                          _current == 0
+                              ? 'Discover the secrets of safe stock trading! No expenses, only your investment instincts.'
+                              : 'Create events with which you can practice selling and buying stocks.',
+                          style: OnboardingTextStyle.description,
+                          textAlign: TextAlign.start,
+                          softWrap: true,
+                          overflow: TextOverflow.visible,
+                        ),
+                      ],
                     ),
-                  )
-                ],
-              ),
-            )
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: List.generate(2, (index) {
+                    return AnimatedContainer(
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.easeInOut,
+                      width: _current == index
+                          ? size.width * 0.075
+                          : size.width * 0.35,
+                      height: size.width * 0.02,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 0.5, horizontal: 3.5),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(size.width * 0.01),
+                        color: _current == index
+                            ? AppColors.blueColor
+                            : AppColors.lightGreyColor,
+                      ),
+                    );
+                  }),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                CarouselSlider(
+                  items: const [
+                    IntroductionPNGWidget(
+                      imagePath: 'assets/images/onboarding1.png',
+                    ),
+                    IntroductionPNGWidget(
+                      imagePath: 'assets/images/onboarding2.png',
+                    ),
+                  ],
+                  carouselController: _carouselController,
+                  options: CarouselOptions(
+                    height: size.height * 0.5,
+                    autoPlay: false,
+                    //  enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.01,
+                ),
+                ChosenActionButton(
+                  onTap: () async {
+                    context.read<OnboardingCubit>().setFirstTime();
+                    Navigator.pushReplacementNamed(context, AppRoutes.home);
+                  },
+                  text: 'Continue',
+                ),
+                SizedBox(
+                  height: size.height * 0.015,
+                ),
+              ],
+            ),
           ],
         ),
       ),

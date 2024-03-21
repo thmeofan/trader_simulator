@@ -4,9 +4,9 @@ import '../models/event_model.dart';
 import '../models/stock_model.dart';
 
 void generateRandomEvent() {
-  EventModel event = eventModelList[Random().nextInt(eventModelList.length)];
-
   for (StockModel stock in stockModelList) {
+    EventModel event = eventModelList[Random().nextInt(eventModelList.length)];
+
     if (event.type == EventType.positive) {
       stock.interest = event.interestChange;
     } else {
@@ -14,6 +14,7 @@ void generateRandomEvent() {
     }
 
     stock.price = stock.price * (1 + stock.interest);
+    stock.event = event;
   }
 }
 

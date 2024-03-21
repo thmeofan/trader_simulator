@@ -1,14 +1,19 @@
+import 'event_model.dart';
+
 class StockModel {
   String icon;
   String name;
   double price;
   double interest;
+  EventModel? event;
 
-  StockModel(
-      {required this.icon,
-      required this.name,
-      required this.price,
-      this.interest = 0.0});
+  StockModel({
+    required this.icon,
+    required this.name,
+    required this.price,
+    this.interest = 0.0,
+    this.event,
+  });
 }
 
 List<StockModel> stockModelList = [

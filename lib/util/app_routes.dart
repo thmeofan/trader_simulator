@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trader_simulator/data/models/stock_model.dart';
+import 'package:trader_simulator/views/portfolio/views/buy_screen.dart';
+import 'package:trader_simulator/views/portfolio/views/sell_screen.dart';
 import '../blocs/onboarding_cubit/onboarding_cubit.dart';
 import '../data/models/news_model.dart';
 import '../data/repository/onboarding_repo.dart';
@@ -11,7 +14,8 @@ import '../views/settings/views/settings_screen.dart';
 abstract class AppRoutes {
   static const home = 'home';
   static const welcome = 'welcome';
-  static const profile = 'profile';
+  static const sell = 'sell';
+  static const buy = 'buy';
   static const operation = 'operation';
   static const article = 'article';
 
@@ -24,8 +28,12 @@ abstract class AppRoutes {
     switch (settings.name) {
       case home:
         child = const HomeScreen();
-      case profile:
-        child = const SettingsScreen();
+      case sell:
+        StockModel stock = settings.arguments as StockModel;
+        child = SellScreen(stock: stock);
+      case buy:
+        StockModel stock = settings.arguments as StockModel;
+        child = BuyScreen(stock: stock);
       case article:
         NewsModel news = settings.arguments as NewsModel;
         child = ArticleScreen(

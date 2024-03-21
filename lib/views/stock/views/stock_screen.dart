@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trader_simulator/consts/app_colors.dart';
+import 'package:trader_simulator/views/app/widgets/cash_rect_widget.dart';
 import 'package:trader_simulator/views/app/widgets/stock_widget.dart';
 import 'package:trader_simulator/views/stock/widgets/banner_widget.dart';
 
+import '../../../consts/app_text_styles/synopsis_text_style.dart';
 import '../../../data/models/stock_model.dart';
 import '../../../data/repository/game_logic_repo.dart';
-import 'stock_details_screen.dart';
+import '../../../util/app_routes.dart';
+import 'event_details_screen.dart';
 
 class StockScreen extends StatefulWidget {
   @override
@@ -24,7 +27,10 @@ class _StockScreenState extends State<StockScreen> {
   void _navigateToStockDetail(StockModel stock) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => StockDetailScreen(stock: stock)),
+      MaterialPageRoute(
+          builder: (context) => EventDetailScreen(
+                stock: stock,
+              )),
     );
   }
 
@@ -32,33 +38,41 @@ class _StockScreenState extends State<StockScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Stocks'),
+        centerTitle: true,
+        backgroundColor: AppColors.blackColor,
       ),
       body: Container(
         color: AppColors.blackColor,
-        child: Column(
-          children: [
-            BannerWidget(
-                imagePath: 'assets/images/star.svg',
-                title: 'Events of the day',
-                subtitle:
-                    'Generate stock events to practice buying and selling stocks.',
-                onButtonPressed: _handleEventGeneration),
-            Expanded(
-              child: ListView.builder(
-                itemCount: stockModelList.length,
-                itemBuilder: (context, index) {
-                  StockModel stock = stockModelList[index];
-                  return GestureDetector(
-                    onTap: () {
-                      _navigateToStockDetail(stock);
-                    },
-                    child: StockWidget(stock),
-                  );
-                },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              CashRectWidget(),
+              BannerWidget(
+                  imagePath: 'assets/icons/star.png',
+                  title: 'Events of the day',
+                  subtitle:
+                      'Generate stock events to practice\nbuying and selling stocks.',
+                  onButtonPressed: _handleEventGeneration),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemCount: stockModelList.length,
+                  itemBuilder: (context, index) {
+                    StockModel stock = stockModelList[index];
+                    return GestureDetector(
+                      onTap: () {
+                        _navigateToStockDetail(stock);
+                      },
+                      child: StockWidget(stock),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

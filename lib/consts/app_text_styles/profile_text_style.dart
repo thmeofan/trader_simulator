@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../app_colors.dart';
 
 class ProfileTextStyle {
-  static const TextStyle user = TextStyle(
+  static TextStyle user = TextStyle(
     fontFamily: 'SF Pro Text',
     fontSize: 14.0,
     height: 20 / 14,
@@ -15,9 +15,9 @@ class ProfileTextStyle {
     fontSize: 14.0,
     height: 20 / 14,
     fontWeight: FontWeight.w600,
-   // color: AppColors.lightGreyColor,
+    // color: AppColors.lightGreyColor,
   );
-  static const TextStyle tile = TextStyle(
+  static TextStyle tile = TextStyle(
     fontFamily: 'SF Pro Text',
     fontSize: 12.0,
     height: 16 / 12,
@@ -28,6 +28,6 @@ class ProfileTextStyle {
     fontFamily: 'SF Pro Text',
     fontSize: 20.0,
     fontWeight: FontWeight.w700,
-   // color: AppColors.lightGreyColor,
+    // color: AppColors.lightGreyColor,
   );
 }

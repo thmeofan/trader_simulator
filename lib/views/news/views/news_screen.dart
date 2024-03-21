@@ -19,17 +19,6 @@ class NewsScreen extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: AppColors.blackColor,
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.profile);
-              },
-              icon: SvgPicture.asset(
-                'assets/icons/settings.svg',
-                color: Colors.white,
-              ),
-            )
-          ],
           title: const Text(
             'News',
             style: SynopsisTextStyle.appbar,

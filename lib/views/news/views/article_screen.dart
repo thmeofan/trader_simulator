@@ -28,7 +28,7 @@ class ArticleScreen extends StatelessWidget {
             Navigator.of(context).pop();
           },
           icon: SvgPicture.asset(
-            'assets/icons/arrow.svg',
+            'assets/icons/leading.svg',
             width: screenSize.width * 0.04,
             height: screenSize.width * 0.04,
             // color: Colors.white,
@@ -55,7 +55,7 @@ class ArticleScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: screenSize.width * 0.05,
+                  horizontal: screenSize.width * 0.025,
                   vertical: screenSize.width * 0.01),
               child: Text(
                 newsModel.title,
@@ -65,10 +65,19 @@ class ArticleScreen extends StatelessWidget {
             ),
             Expanded(
               child: SingleChildScrollView(
-                padding: EdgeInsets.all(screenSize.width * 0.05),
-                child: Text(
-                  newsModel.text,
-                  style: NewsTextStyle.articleText,
+                padding: EdgeInsets.all(screenSize.width * 0.025),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    color: AppColors.darkGreyColor,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(screenSize.width * 0.025),
+                    child: Text(
+                      newsModel.text,
+                      style: NewsTextStyle.articleText,
+                    ),
+                  ),
                 ),
               ),
             ),

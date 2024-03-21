@@ -31,17 +31,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: AppColors.blackColor,
-        title: const Text(
-          'Back',
-          style: SynopsisTextStyle.appbar,
-        ),
-        titleSpacing: -5,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset('assets/icons/leading.svg'),
-        ),
       ),
       body: Container(
         color: AppColors.blackColor,
@@ -52,6 +41,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: <Widget>[
               SizedBox(
                 height: size.height * 0.12,
+              ),
+              Text(
+                'Settings',
+                style: TextStyle(color: Colors.white),
               ),
               SizedBox(
                 height: size.height * 0.01,
@@ -67,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   );
                 },
-                assetName: 'assets/icons/term.svg',
+                assetName: 'assets/icons/terms.svg',
               ),
               SizedBox(
                 height: size.height * 0.01,
