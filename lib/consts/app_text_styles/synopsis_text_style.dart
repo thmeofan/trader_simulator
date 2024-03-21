@@ -5,18 +5,18 @@ import '../app_colors.dart';
 class SynopsisTextStyle {
   static const TextStyle tile = TextStyle(
     fontFamily: 'SF Pro Text',
-    fontSize: 12.0,
+    fontSize: 16.0,
     height: 20 / 18,
     fontWeight: FontWeight.w500,
     color: Colors.white,
   );
 
-  static const TextStyle read = TextStyle(
+  static const TextStyle screenTitle = TextStyle(
     fontFamily: 'SF Pro Text',
-    fontSize: 12.0,
+    fontSize: 26.0,
     height: 18 / 12,
-    fontWeight: FontWeight.w400,
-    //   color: AppColors.orangeColor,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
   );
   static const TextStyle appbar = TextStyle(
     fontFamily: 'SF Pro Text',
@@ -30,6 +30,6 @@ class SynopsisTextStyle {
     fontSize: 18.0,
     height: 24 / 14,
     fontWeight: FontWeight.w400,
-    color: Colors.white,
+    color: AppColors.blueColor,
   );
 }

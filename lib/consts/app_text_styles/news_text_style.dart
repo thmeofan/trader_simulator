@@ -5,7 +5,7 @@ import '../app_colors.dart';
 class NewsTextStyle {
   static const TextStyle title = TextStyle(
     fontFamily: 'SF Pro Text',
-    fontSize: 20.0,
+    fontSize: 18.0,
     height: 20 / 18,
     fontWeight: FontWeight.w800,
     color: Colors.white,

@@ -3,11 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trader_simulator/data/repository/game_logic_repo.dart';
 
 import '../../../consts/app_colors.dart';
-import '../../../consts/app_text_styles/constructor_text_style.dart';
+import '../../../consts/app_text_styles/portfolio_text_style.dart';
+import '../../../consts/app_text_styles/stock_text_style.dart';
 
 class CashRectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
       height: MediaQuery.of(context).size.height * 0.075,
@@ -20,14 +22,21 @@ class CashRectWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            Text('You have'),
+            Text('You have', style: StockTextStyle.balanceTitle),
             Spacer(),
-            SvgPicture.asset('assets/icons/portfolio.svg'),
-            Text(portfolio.length.toString()),
-            Text(
-              cash.toString(),
-              style: FinanceTextStyle.output,
+            SvgPicture.asset(
+              'assets/icons/portfolio.svg',
+              color: AppColors.blueColor,
             ),
+            SizedBox(
+              width: size.width * 0.02,
+            ),
+            Text(portfolio.length.toString(),
+                style: StockTextStyle.balanceCount),
+            SizedBox(
+              width: size.width * 0.02,
+            ),
+            Text(cash.toStringAsFixed(2), style: StockTextStyle.balanceTitle),
           ],
         ),
       ),

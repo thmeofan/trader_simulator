@@ -20,7 +20,7 @@ class ArticleScreen extends StatelessWidget {
         elevation: 0,
         titleSpacing: -5,
         title: const Text(
-          'back',
+          'Back',
           style: SynopsisTextStyle.back,
         ),
         leading: IconButton(

@@ -5,17 +5,17 @@ import '../app_colors.dart';
 class OnboardingTextStyle {
   static const TextStyle introduction = TextStyle(
     fontFamily: 'SF Pro Display',
-    fontSize: 24.0,
+    fontSize: 26.0,
     fontWeight: FontWeight.w800,
     // height: 24.0 / 20.0,
     color: Colors.white,
   );
-  static const TextStyle description = TextStyle(
+  static TextStyle description = TextStyle(
     fontFamily: 'SF Pro Display',
-    fontSize: 18.0,
+    fontSize: 16.0,
     fontWeight: FontWeight.w400,
     //  height: 20.0 / 11.0,
-    color: Colors.white,
+    color: AppColors.lightGreyColor,
   );
   static const TextStyle screenTitle = TextStyle(
     fontFamily: 'SF Pro Display',

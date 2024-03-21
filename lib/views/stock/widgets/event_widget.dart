@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:trader_simulator/consts/app_text_styles/portfolio_text_style.dart';
+import 'package:trader_simulator/consts/app_text_styles/stock_text_style.dart';
 
 import '../../../consts/app_colors.dart';
 import '../../../data/models/event_model.dart';
@@ -16,12 +18,12 @@ class EventWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: size.height * 0.25,
+        height: size.height * 0.4,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: AppColors.darkGreyColor,
         ),
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,29 +38,20 @@ class EventWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Last event',
-                          style: TextStyle(
-                            fontSize: 14.0,
-                          ),
-                        ),
-                        const SizedBox(height: 4.0),
+                        const Text('Last event',
+                            style: PortfolioTextStyle.lastEvent),
+                        const SizedBox(height: 2.0),
                         Text(
                           event!.title,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.0,
-                          ),
+                          style: PortfolioTextStyle.eventTitle,
+                          maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        const SizedBox(height: 4.0),
+                        const SizedBox(height: 2.0),
                         Expanded(
                           child: Text(
                             event!.description,
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15.0,
-                            ),
+                            style: PortfolioTextStyle.eventText,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 7,
                           ),

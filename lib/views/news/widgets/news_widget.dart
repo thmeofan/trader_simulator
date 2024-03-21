@@ -21,7 +21,7 @@ class NewsWidget extends StatelessWidget {
               .pushNamed(AppRoutes.article, arguments: newsModel);
         },
         child: Container(
-          height: screenSize.height * 0.175,
+          height: screenSize.height * 0.2,
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(vertical: screenSize.width * 0.01),
           decoration: BoxDecoration(
@@ -41,7 +41,7 @@ class NewsWidget extends StatelessWidget {
                         child: Center(
                           child: Text(
                             newsModel.title,
-                            maxLines: 2,
+                            maxLines: 5,
                             style: NewsTextStyle.title,
                           ),
                         ),

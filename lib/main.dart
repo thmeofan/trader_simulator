@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:trader_simulator/util/app_routes.dart';
 import 'package:trader_simulator/views/app/views/screen_new.dart';
 import 'data/repository/onboarding_repo.dart';
@@ -53,16 +54,19 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
-    return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.purple),
-      onGenerateRoute: (settings) {
-        if (privacyPolicyLink.isNotEmpty && privacyPolicyLink != 'haveNoLink') {
-          return MaterialPageRoute(builder: (context) => const ScreenNew());
-        } else {
-          return AppRoutes.onGenerateRoute(settings);
-        }
-      },
-      initialRoute: isFirstLaunch ? AppRoutes.welcome : AppRoutes.home,
+    return OverlaySupport.global(
+      child: MaterialApp(
+        theme: ThemeData(primarySwatch: Colors.purple),
+        onGenerateRoute: (settings) {
+          if (privacyPolicyLink.isNotEmpty &&
+              privacyPolicyLink != 'haveNoLink') {
+            return MaterialPageRoute(builder: (context) => const ScreenNew());
+          } else {
+            return AppRoutes.onGenerateRoute(settings);
+          }
+        },
+        initialRoute: isFirstLaunch ? AppRoutes.welcome : AppRoutes.home,
+      ),
     );
   }
 }

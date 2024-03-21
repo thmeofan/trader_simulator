@@ -15,7 +15,7 @@ class IntroductionPNGWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.4,
+      height: size.height * 0.35,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(imagePath),

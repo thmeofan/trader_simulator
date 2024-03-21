@@ -32,7 +32,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         backgroundColor: AppColors.blackColor,
         shadowColor: Colors.transparent,
       ),
@@ -43,15 +42,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(size.height * 0.01),
+                  padding: EdgeInsets.all(size.height * 0.02),
                   child: Container(
-                    height: size.height * 0.18,
+                    height: size.height * 0.2,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // SizedBox(
-                        //   height: size.height * 0.01,
-                        // ),
                         Text(
                           _current == 0 ? 'Welcome to app!' : 'Create events.',
                           style: OnboardingTextStyle.introduction,
@@ -60,7 +56,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           overflow: TextOverflow.visible,
                         ),
                         SizedBox(
-                          height: size.height * 0.01,
+                          height: size.height * 0.0025,
                         ),
                         Text(
                           _current == 0
@@ -68,36 +64,47 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               : 'Create events with which you can practice selling and buying stocks.',
                           style: OnboardingTextStyle.description,
                           textAlign: TextAlign.start,
+                          maxLines: 4,
                           softWrap: true,
-                          overflow: TextOverflow.visible,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: List.generate(2, (index) {
-                    return AnimatedContainer(
-                      duration: Duration(milliseconds: 200),
-                      curve: Curves.easeInOut,
-                      width: _current == index
-                          ? size.width * 0.075
-                          : size.width * 0.35,
-                      height: size.width * 0.02,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 0.5, horizontal: 3.5),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(size.width * 0.01),
-                        color: _current == index
-                            ? AppColors.blueColor
-                            : AppColors.lightGreyColor,
-                      ),
-                    );
-                  }),
+                SizedBox(
+                  height: size.height * 0.02,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.height * 0.02),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: List.generate(2, (index) {
+                      return AnimatedContainer(
+                        duration: Duration(milliseconds: 200),
+                        curve: Curves.easeInOut,
+                        width: _current == index
+                            ? size.width * 0.075
+                            : size.width * 0.35,
+                        height: size.width * 0.02,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 0.5, horizontal: 5),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius:
+                              BorderRadius.circular(size.width * 0.01),
+                          color: _current == index
+                              ? AppColors.blueColor
+                              : AppColors.lightGreyColor,
+                        ),
+                      );
+                    }),
+                  ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: size.height * 0.015,
             ),
             Column(
               children: [
@@ -112,7 +119,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ],
                   carouselController: _carouselController,
                   options: CarouselOptions(
-                    height: size.height * 0.5,
+                    height: size.height * 0.44,
                     autoPlay: false,
                     //  enlargeCenterPage: true,
                     viewportFraction: 1,

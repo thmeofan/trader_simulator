@@ -13,21 +13,28 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: AppColors.blackColor,
-          title: const Text(
-            'News',
-            style: SynopsisTextStyle.appbar,
-            textAlign: TextAlign.center,
-          ),
         ),
         body: Container(
           color: AppColors.blackColor,
           child: Column(children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.height * 0.018),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'News',
+                    style: SynopsisTextStyle.screenTitle,
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: newsModel.length,
@@ -37,7 +44,7 @@ class NewsScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: screenSize.height * 0.01,
+              height: size.height * 0.01,
             ),
           ]),
         ));

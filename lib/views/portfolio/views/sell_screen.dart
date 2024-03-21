@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:trader_simulator/consts/app_text_styles/stock_text_style.dart';
+import 'package:trader_simulator/util/app_routes.dart';
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles/synopsis_text_style.dart';
 import '../../../data/models/stock_model.dart';
@@ -20,10 +22,8 @@ class SellScreen extends StatefulWidget {
 }
 
 class _SellScreenState extends State<SellScreen> {
-  void _handleSellStock() {
-    setState(() {
-      sellStock(widget.stock);
-    });
+  bool canSellStock(StockModel stock) {
+    return portfolio.contains(stock);
   }
 
   @override
@@ -35,12 +35,12 @@ class _SellScreenState extends State<SellScreen> {
         elevation: 0,
         titleSpacing: -5,
         title: const Text(
-          'back',
+          'Back',
           style: SynopsisTextStyle.back,
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacementNamed(AppRoutes.home);
           },
           icon: SvgPicture.asset(
             'assets/icons/leading.svg',
@@ -56,15 +56,68 @@ class _SellScreenState extends State<SellScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(widget.stock.name),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [CashSqWidget(), StockWidget(widget.stock)],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.height * 0.035),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.stock.name,
+                        style: SynopsisTextStyle.screenTitle,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Sell ${widget.stock.name} stock',
+                        style: StockTextStyle.balanceAmount,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            SellButtonWidget(onTap: () {
-              _handleSellStock;
-            }),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CashSqWidget(
+                  stock: widget.stock,
+                ),
+                StockWidget(widget.stock)
+              ],
+            ),
+            SellButtonWidget(
+              onTap: () async {
+                try {
+                  if (canSellStock(widget.stock)) {
+                    setState(() {
+                      sellStock(widget.stock);
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('You sold the stock'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                            'You don\'t have this stock in your portfolio'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  print('Error selling stock: $e');
+                }
+              },
+            ),
           ],
         ),
       ),
