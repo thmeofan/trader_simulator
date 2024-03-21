@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:trader_simulator/consts/app_colors.dart';
 import 'package:trader_simulator/consts/app_text_styles/stock_text_style.dart';
 import 'package:trader_simulator/consts/app_text_styles/synopsis_text_style.dart';
-
 import '../../../consts/app_text_styles/portfolio_text_style.dart';
 import '../../../data/models/stock_model.dart';
 import '../../../data/repository/game_logic_repo.dart';
@@ -100,6 +99,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                         child: Center(
                           child: Text(
                             'You need to buy stocks to see them in your portfolio.',
+                            textAlign: TextAlign.center,
                             style: StockTextStyle.stock,
                           ),
                         ),

@@ -57,7 +57,7 @@ class _SellScreenState extends State<SellScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.height * 0.035),
+              padding: EdgeInsets.symmetric(horizontal: size.height * 0.016),
               child: Column(
                 children: [
                   Row(

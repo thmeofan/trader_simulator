@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trader_simulator/consts/app_text_styles/stock_text_style.dart';
 import 'package:trader_simulator/data/repository/game_logic_repo.dart';
-
 import '../../../consts/app_colors.dart';
-import '../../../consts/app_text_styles/portfolio_text_style.dart';
 import '../../../data/models/stock_model.dart';
 
 class CashSqWidget extends StatelessWidget {

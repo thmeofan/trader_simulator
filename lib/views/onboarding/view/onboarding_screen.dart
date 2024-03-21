@@ -9,7 +9,6 @@ import '../../../consts/app_text_styles/onboarding_text_style.dart';
 import '../../../util/app_routes.dart';
 import '../../app/widgets/chosen_action_button_widget.dart';
 import '../widgets/introduction_png_widget.dart';
-import '../widgets/introduction_svg_widget.dart';
 
 class OnboardingScreen extends StatefulWidget {
   final bool? isFirstTime;

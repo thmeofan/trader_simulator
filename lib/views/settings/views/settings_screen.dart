@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:trader_simulator/consts/app_text_styles/synopsis_text_style.dart';
 import '../../../consts/app_colors.dart';
-import '../../../consts/app_text_styles/portfolio_text_style.dart';
 import '../../app/views/my_in_app_web_view.dart';
 import '../widgets/settings_widget.dart';
 

@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:overlay_support/overlay_support.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trader_simulator/consts/app_colors.dart';
 import 'package:trader_simulator/consts/app_text_styles/stock_text_style.dart';
@@ -9,11 +7,9 @@ import 'package:trader_simulator/views/app/widgets/cash_rect_widget.dart';
 import 'package:trader_simulator/views/app/widgets/chosen_action_button_widget.dart';
 import 'package:trader_simulator/views/app/widgets/stock_widget.dart';
 import 'package:trader_simulator/views/stock/widgets/banner_widget.dart';
-
 import '../../../consts/app_text_styles/synopsis_text_style.dart';
 import '../../../data/models/stock_model.dart';
 import '../../../data/repository/game_logic_repo.dart';
-import '../../../util/app_routes.dart';
 import 'event_details_screen.dart';
 
 class StockScreen extends StatefulWidget {
@@ -42,51 +38,56 @@ class _StockScreenState extends State<StockScreen> {
     final prefs = await SharedPreferences.getInstance();
     final isFirstTime = prefs.getBool('isFirstTime') ?? true;
     if (isFirstTime) {
-      showOverlay(
-        (context, t) {
-          return Material(
-            child: Stack(
-              children: [
-                ModalBarrier(
-                  color: Colors.black.withOpacity(0.5),
-                  dismissible: false,
-                ),
-                Center(
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return Stack(
+            children: [
+              Positioned.fill(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
                   child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.0),
-                      color: AppColors.darkGreyColor,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'How to play?',
-                          style: SynopsisTextStyle.screenTitle,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Acquire your first shares. Create an event. '
-                          'Read the description. Repeat!',
-                          style: StockTextStyle.stock,
-                          textAlign: TextAlign.center,
-                        ),
-                        ChosenActionButton(
-                          text: 'Got it!',
-                          onTap: () {
-                            OverlaySupportEntry.of(context)?.dismiss();
-                          },
-                        )
-                      ],
-                    ),
+                    color: Colors.black.withOpacity(0.5),
                   ),
                 ),
-              ],
-            ),
+              ),
+              Center(
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: AppColors.blackColor,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'How to play?',
+                        style: SynopsisTextStyle.screenTitle,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Acquire your first shares. Create an event. '
+                        'Read the description. Repeat!',
+                        style: StockTextStyle.stock,
+                        textAlign: TextAlign.center,
+                      ),
+                      ChosenActionButton(
+                        text: 'Got it!',
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           );
         },
-        duration: Duration(seconds: 100),
       );
 
       await prefs.setBool('isFirstTime', false);

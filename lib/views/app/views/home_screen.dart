@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:trader_simulator/views/portfolio/views/portfolio_screen.dart';
 import 'package:trader_simulator/views/settings/views/settings_screen.dart';
 import 'package:trader_simulator/views/stock/views/stock_screen.dart';
-
 import '../../../consts/app_colors.dart';
 import '../../../data/models/news_model.dart';
 import '../../news/views/news_screen.dart';

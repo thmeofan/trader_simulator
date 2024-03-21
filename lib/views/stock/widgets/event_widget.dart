@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trader_simulator/consts/app_text_styles/portfolio_text_style.dart';
-import 'package:trader_simulator/consts/app_text_styles/stock_text_style.dart';
-
 import '../../../consts/app_colors.dart';
 import '../../../data/models/event_model.dart';
-import '../../app/widgets/chosen_action_button_widget.dart';
 
 class EventWidget extends StatelessWidget {
   final EventModel? event;

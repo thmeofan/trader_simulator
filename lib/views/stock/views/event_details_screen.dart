@@ -7,11 +7,8 @@ import 'package:trader_simulator/consts/app_text_styles/stock_text_style.dart';
 import 'package:trader_simulator/views/app/widgets/buy_button_widget.dart';
 import 'package:trader_simulator/views/app/widgets/cash_sq_widget.dart';
 import 'package:trader_simulator/views/app/widgets/stock_widget.dart';
-
 import '../../../consts/app_text_styles/synopsis_text_style.dart';
-import '../../../data/models/event_model.dart';
 import '../../../data/models/stock_model.dart';
-import '../../../data/repository/game_logic_repo.dart';
 import '../../../util/app_routes.dart';
 import '../../app/widgets/sell_button_widget.dart';
 import '../widgets/event_widget.dart';
@@ -27,12 +24,6 @@ class EventDetailScreen extends StatefulWidget {
 }
 
 class _EventDetailScreenState extends State<EventDetailScreen> {
-  void _handleBuyStock() {
-    setState(() {
-      buyStock(widget.stock);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:trader_simulator/views/portfolio/views/portfolio_screen.dart';
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles/stock_text_style.dart';
 import '../../../consts/app_text_styles/synopsis_text_style.dart';
@@ -54,7 +53,7 @@ class _BuyScreenState extends State<BuyScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.height * 0.035),
+              padding: EdgeInsets.symmetric(horizontal: size.height * 0.016),
               child: Column(
                 children: [
                   Row(

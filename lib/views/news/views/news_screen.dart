@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import '../../../consts/app_colors.dart';
 import '../../../consts/app_text_styles/synopsis_text_style.dart';
 import '../../../data/models/news_model.dart';
-import '../../../util/app_routes.dart';
 import '../widgets/news_widget.dart';
 
 class NewsScreen extends StatelessWidget {
